@@ -159,16 +159,18 @@ Now run the job:
 cde job run --name "cde_cli_job_custom_log_level" --application-file "sql.py"
 ```
 
-Search for job runs by job name: 
+When you search for the job you can add multiple filter conditions as shown below: 
 
 ```
-cde run list name[cde_cli_job_custom_log_level]
+cde run list --filter 'status[like]%succeeded%' --filter 'spark.spec.file[eq]sql.py' --filter 'job[eq]cde_cli_job_custom_log_level'
 ```
 
-And finally collect logs. Make sure to replace the id integer with the one corresponding to your job run.
+The above command will print a dictionary. Take note of the id field at the top.
+
+Finally, issue the following command to collect logs. Make sure to replace the id integer with the one corresponding to your job run.
 
 ```
-cde run logs --type "driver/stdout" --id 47
+cde run logs --type "driver/stdout" --id 358
 ```
 
 
@@ -184,9 +186,9 @@ Top benefits of using CDE include:
 
 If you are exploring CDE you may find the following tutorials relevant:
 
-* [Spark 3 & Iceberg](https://github.com/pdefusco/Spark3_Iceberg_CML): a quick intro of Time Travel Capabilities with Spark 3
-
 * [CDE CLI Demo](https://github.com/pdefusco/CDE_CLI_demo): A more advanced CDE CLI reference with additional details for the CDE user who wants to move beyond the basics shown here. 
+
+* [Spark 3 & Iceberg](https://github.com/pdefusco/Spark3_Iceberg_CML): a quick intro of Time Travel Capabilities with Spark 3
 
 * [GitLab2CDE](https://github.com/pdefusco/Gitlab2CDE): a CI/CD pipeline to orchestrate Cross Cluster Workflows - Hybrid/Multicloud Data Engineering
 
