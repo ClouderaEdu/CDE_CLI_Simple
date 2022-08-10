@@ -10,19 +10,19 @@ For a more detailed resource or a reference for converting Spark Submits to CDE 
 
 ## Requirements
 
-This demo requires 
+This demo requires the following: 
 
 * A CDE Virtual Cluster in CDP Private or Public Cloud (Azure or AWS)
 * Installing the CDE CLI on your local machine. Please visit [these instructions](https://docs.cloudera.com/data-engineering/cloud/cli-access/topics/cde-download-cli.html) for help.
 * Basic familiarity with Spark, Python, and SQL will help. However, no modifications to the code are required. 
-* Preloading data to Cloud Storage is not required as the PySpark job will create the data directly.
+* Preloading data to Cloud Storage is not required. The data will be created as part of the PySpark job.
 
 
 ## Project Setup
 
-Clone this GitHub repository to your local machine or download the files directly from here. 
+Clone this GitHub repository to your local machine or download the files directly from GitHub. 
 
-To clone this GitHub repository, create and navigate to a local directory and then run
+To clone this GitHub repository, create and navigate to a local directory and then run the following command:
 
 ```
 git clone https://github.com/pdefusco/CDE_CLI_Simple.git
@@ -53,8 +53,8 @@ Available Commands:
   spark       Spark commands
 ```
 
-The *airflow* and *spark* commands will allow you to trigger a CDE Airflow DAG or CDE Spark Submit. 
-These are useful for submitting a job to CDE with minimum work. For example, you may have developed a new Spark job and you would like to give it a quick test run.
+The *airflow* and *spark* commands allow you to trigger a CDE Airflow DAG or CDE Spark Submit respectively. 
+They are useful for submitting a job to CDE with minimum work. For example, you may have developed a new Spark job and you would like to give it a quick test run.
 You can learn more by issuing:
 
 ```
@@ -67,8 +67,8 @@ or
 cde spark --help
 ```
 
-The *job* command allows you to create a CDE Job. CDE Jobs can be of two types: "Airflow" or "Spark". Why create a CDE Job if you can just use the previous commands?
-A CDE Job allows you to specify CDE options, for example setting an execution schedule or listing previous runs.
+The *job* command allows you to create a CDE Job so you can run Airflow and Spark jobs. Why create a CDE Job if you can just use the previous commands?
+A CDE Job allows you to specify additional options, for example setting an execution schedule or listing previous runs.
 You can learn more by issuing:
 
 ```
