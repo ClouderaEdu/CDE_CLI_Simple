@@ -119,35 +119,58 @@ cde resource upload --name cde_cli_simple --local-path "sql.py" --resource-path 
 
 #### Step 5: Instantiate the Spark CDE Job
 
-Once the file is located in the CDE Resource, it is a simple command to create a CDE Job from it. 
+Once the file is located in the CDE Resource you can create a CDE Job with it. 
 
-Below is a simple example. You can optionally add more options such as a recurrent schedule. 
+You can optionally add more options such as a recurrent schedule as shown below. 
 
 ```
-
+cde job create --name "sql_job" --type "spark" --application-file "sql.py" --cron-expression "0 */1 * * *" --schedule-enabled "true" --schedule-start "2022-08-09" --schedule-end "2022-10-02" --mount-1-resource "cde_cli_simple"
 ```
 
 
 #### Step 6: Trigger Execution of the Spark CDE Job
 
-With the following command the Spark CDE Job will be triggered in the CDE Virtual Cluster. 
+With the following command the Spark CDE Job will be triggered immediately in the CDE Virtual Cluster. 
 
 ```
-
+cde job run --name "sql_job" --application-file "sql.py"
 ```
 
 
 #### Step 7: Confirm Run and Download Logs
 
-Issue the following commands to query the CDE Virtual Cluster and obtain the latest CDE Job run as well as its associated logs.
+Issue the following commands to query the CDE Virtual Cluster and obtain the CDE Job runs. 
 
 ```
-
+cde run list
 ```
 
-```
+#### Step 8: Customize the Spark Log Level
+
+Let's create a new CDE Job with log level of "DEBUG". Notice you could have also used the *cde job update* command to modify the existing job.
 
 ```
+cde job create --name "cde_cli_job_custom_log_level" --type "spark" --application-file "sql.py" --log-level "DEBUG" --schedule-enabled "false" --mount-1-resource "cde_cli_simple"
+```
+
+Now run the job:
+
+```
+cde job run --name "cde_cli_job_custom_log_level" --application-file "sql.py"
+```
+
+Search for job runs by job name: 
+
+```
+cde run list name[cde_cli_job_custom_log_level]
+```
+
+And finally collect logs. Make sure to replace the id integer with the one corresponding to your job run.
+
+```
+cde run logs --type "driver/stdout" --id 47
+```
+
 
 ## Conclusions & Next Steps
 
