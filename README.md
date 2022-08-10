@@ -95,25 +95,25 @@ cde run --help
 Issue the following command to run the local PySpark file in CDE. Notice this does not require the data being in cloud storage as a prerequisite.
 
 ```
-
+cde spark submit sql.py
 ```
 
 
 #### Step 3: Create a CDE Resource
 
-Create a CDE Resource of type *file* with the following command.
+Create a CDE Resource of type *file* with the following command. The resource will be named "cde_cli_simple".
 
 ```
-
+cde resource create --name cde_cli_simple
 ```
 
 
 #### Step 4: Upload the Spark Job File to the CDE Resource
 
-Load the PySpark file located in this directory to the CDE Resource.
+Load the PySpark file to the CDE Resource. The command assumes the sql.py file is located in your local directory.
 
 ```
-
+cde resource upload --name cde_cli_simple --local-path "sql.py" --resource-path "sql.py"
 ```
 
 
