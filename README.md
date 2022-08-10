@@ -1,4 +1,4 @@
-# CDE_CLI_Simple
+# A Simple Introduction to the CDE CLI
 
 
 ## Objective
